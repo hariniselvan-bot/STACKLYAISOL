@@ -1,0 +1,2713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <script>
+    document.documentElement.classList.add("js");
+  </script>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Log in | Stackly AI Solutions</title>
+
+  <meta
+    name="description"
+    content="Log in to your Stackly AI workspace."
+  >
+
+  <meta
+    property="og:title"
+    content="Log in | Stackly AI Solutions"
+  >
+
+  <meta
+    property="og:description"
+    content="Log in to your Stackly AI workspace."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+
+  <!-- =====================================================
+       GOOGLE FONTS
+  ====================================================== -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =====================================================
+       AOS
+  ====================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+  >
+
+
+  <!-- =====================================================
+       PROJECT CSS
+  ====================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="assets/css/style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="assets/css/animations.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="assets/css/responsive.css"
+  >
+
+
+  <!-- =====================================================
+       FAVICON
+  ====================================================== -->
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="assets/svg/favicon.svg"
+  >
+
+
+  <!-- =====================================================
+       LOGIN PAGE CSS
+  ====================================================== -->
+
+  <style>
+
+    :root {
+
+      --login-bg: #f5f7f3;
+
+      --login-white: #ffffff;
+
+      --login-black: #101510;
+
+      --login-muted: #737b73;
+
+      --login-border: #dfe4de;
+
+      --login-green: #667a68;
+
+      --login-dark-green: #35473b;
+
+      --login-burgundy: #6f1025;
+
+    }
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+
+      margin: 0;
+
+      background:
+        var(--login-bg);
+
+      color:
+        var(--login-black);
+
+      font-family:
+        "Manrope",
+        sans-serif;
+
+    }
+
+
+    /* =====================================================
+       PAGE
+    ====================================================== */
+
+    .login-page {
+
+      min-height: 100vh;
+
+      display: flex;
+
+      flex-direction: column;
+
+      overflow: hidden;
+
+    }
+
+
+    /* =====================================================
+       HEADER
+    ====================================================== */
+
+    .login-header {
+
+      width: 100%;
+
+      min-height: 82px;
+
+      padding:
+        0 5vw;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      background:
+        rgba(248,249,246,.9);
+
+      border-bottom:
+        1px solid
+        rgba(20,30,24,.07);
+
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
+
+      position: relative;
+
+      z-index: 20;
+
+    }
+
+
+    .login-logo {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      text-decoration: none;
+
+    }
+
+
+    .login-logo img {
+
+      display: block;
+
+      width: 138px;
+
+      height: auto;
+
+    }
+
+
+    .header-status {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      color:
+        #737b74;
+
+      font-size:
+        .68rem;
+
+      font-weight:
+        700;
+
+      letter-spacing:
+        .04em;
+
+    }
+
+
+    .status-dot {
+
+      width: 7px;
+
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        #71886e;
+
+      box-shadow:
+        0 0 0 5px
+        rgba(113,136,110,.1);
+
+    }
+
+
+    /* =====================================================
+       MAIN
+    ====================================================== */
+
+    .login-main {
+
+      flex: 1;
+
+      width: min(1440px, 100%);
+
+      margin: 0 auto;
+
+      padding:
+        42px 5vw 55px;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.08fr)
+        minmax(430px, .92fr);
+
+      gap: 42px;
+
+      align-items: stretch;
+
+    }
+
+
+    /* =====================================================
+       LEFT VISUAL
+    ====================================================== */
+
+    .login-visual {
+
+      position: relative;
+
+      min-height: 690px;
+
+      overflow: hidden;
+
+      border-radius: 30px;
+
+      background:
+        #17211b;
+
+      isolation: isolate;
+
+      box-shadow:
+        0 28px 80px
+        rgba(27,39,30,.13);
+
+    }
+
+
+    .login-visual img {
+
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      opacity: .76;
+
+      z-index: -3;
+
+    }
+
+
+    .visual-overlay {
+
+      position: absolute;
+
+      inset: 0;
+
+      z-index: -2;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(10,18,13,.04) 0%,
+          rgba(10,18,13,.17) 36%,
+          rgba(10,18,13,.92) 100%
+        );
+
+    }
+
+
+    .visual-grid {
+
+      position: absolute;
+
+      inset: 0;
+
+      z-index: -1;
+
+      opacity: .12;
+
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.4) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.4) 1px,
+          transparent 1px
+        );
+
+      background-size:
+        65px 65px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          transparent,
+          black
+        );
+
+    }
+
+
+    .visual-top {
+
+      position: absolute;
+
+      top: 28px;
+
+      left: 30px;
+
+      right: 30px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      color:
+        rgba(255,255,255,.72);
+
+      font-size:
+        .65rem;
+
+      font-weight:
+        800;
+
+      letter-spacing:
+        .12em;
+
+      text-transform:
+        uppercase;
+
+    }
+
+
+    .visual-label {
+
+      padding:
+        9px 13px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.16);
+
+      border-radius:
+        999px;
+
+      background:
+        rgba(255,255,255,.06);
+
+      backdrop-filter:
+        blur(12px);
+
+    }
+
+
+    .visual-content {
+
+      position: absolute;
+
+      left: 44px;
+
+      right: 44px;
+
+      bottom: 44px;
+
+      color:
+        white;
+
+    }
+
+
+    .visual-eyebrow {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-bottom:
+        18px;
+
+      font-size:
+        .68rem;
+
+      font-weight:
+        800;
+
+      letter-spacing:
+        .12em;
+
+      text-transform:
+        uppercase;
+
+      color:
+        rgba(255,255,255,.65);
+
+    }
+
+
+    .visual-eyebrow::before {
+
+      content: "";
+
+      width: 25px;
+
+      height: 1px;
+
+      background:
+        rgba(255,255,255,.55);
+
+    }
+
+
+    .visual-content h1 {
+
+      max-width:
+        700px;
+
+      margin: 0;
+
+      font-size:
+        clamp(
+          2.8rem,
+          5vw,
+          5.3rem
+        );
+
+      line-height:
+        .98;
+
+      letter-spacing:
+        -.055em;
+
+      font-weight:
+        700;
+
+    }
+
+
+    .visual-content h1 span {
+
+      color:
+        #c9d4c9;
+
+    }
+
+
+    .visual-content p {
+
+      max-width:
+        540px;
+
+      margin:
+        24px 0 0;
+
+      color:
+        rgba(255,255,255,.68);
+
+      font-size:
+        .9rem;
+
+      line-height:
+        1.75;
+
+    }
+
+
+    .visual-stats {
+
+      display: flex;
+
+      gap: 12px;
+
+      margin-top:
+        30px;
+
+      flex-wrap:
+        wrap;
+
+    }
+
+
+    .visual-stat {
+
+      min-width:
+        120px;
+
+      padding:
+        13px 16px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.12);
+
+      border-radius:
+        14px;
+
+      background:
+        rgba(255,255,255,.055);
+
+      backdrop-filter:
+        blur(15px);
+
+    }
+
+
+    .visual-stat strong {
+
+      display: block;
+
+      font-size:
+        1rem;
+
+    }
+
+
+    .visual-stat span {
+
+      display: block;
+
+      margin-top:
+        3px;
+
+      color:
+        rgba(255,255,255,.52);
+
+      font-size:
+        .62rem;
+
+      text-transform:
+        uppercase;
+
+      letter-spacing:
+        .07em;
+
+    }
+
+
+    /* =====================================================
+       LOGIN PANEL
+    ====================================================== */
+
+    .login-panel {
+
+      position: relative;
+
+      min-height:
+        690px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+    }
+
+
+    .login-card {
+
+      width:
+        min(100%, 510px);
+
+      padding:
+        44px;
+
+      border:
+        1px solid
+        var(--login-border);
+
+      border-radius:
+        28px;
+
+      background:
+        rgba(255,255,255,.94);
+
+      box-shadow:
+        0 30px 80px
+        rgba(33,43,35,.08);
+
+    }
+
+
+    /* =====================================================
+       CARD HEADER
+    ====================================================== */
+
+    .card-kicker {
+
+      margin-bottom:
+        13px;
+
+      color:
+        var(--login-green);
+
+      font-size:
+        .66rem;
+
+      font-weight:
+        800;
+
+      letter-spacing:
+        .13em;
+
+      text-transform:
+        uppercase;
+
+    }
+
+
+    .login-card h2 {
+
+      margin: 0;
+
+      font-size:
+        clamp(
+          2rem,
+          4vw,
+          3rem
+        );
+
+      line-height:
+        1.05;
+
+      letter-spacing:
+        -.045em;
+
+    }
+
+
+    .card-description {
+
+      margin:
+        13px 0 28px;
+
+      color:
+        var(--login-muted);
+
+      font-size:
+        .88rem;
+
+      line-height:
+        1.65;
+
+    }
+
+
+    /* =====================================================
+       USER / ADMIN SELECTOR
+    ====================================================== */
+
+    .role-switch {
+
+      position: relative;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      padding: 4px;
+
+      margin-bottom:
+        27px;
+
+      border:
+        1px solid
+        #dfe4de;
+
+      border-radius:
+        13px;
+
+      background:
+        #f1f4ef;
+
+      overflow: hidden;
+
+    }
+
+
+    .role-option {
+
+      position: relative;
+
+      z-index: 2;
+
+      height:
+        43px;
+
+      border: 0;
+
+      background:
+        transparent;
+
+      color:
+        #7c847c;
+
+      border-radius:
+        9px;
+
+      font-family:
+        inherit;
+
+      font-size:
+        .67rem;
+
+      font-weight:
+        800;
+
+      letter-spacing:
+        .1em;
+
+      cursor:
+        pointer;
+
+      transition:
+        color .25s ease;
+
+    }
+
+
+    .role-option.on {
+
+      color:
+        white;
+
+    }
+
+
+    .rs-pill {
+
+      position: absolute;
+
+      z-index: 1;
+
+      top: 4px;
+
+      bottom: 4px;
+
+      left: 4px;
+
+      width:
+        calc(50% - 4px);
+
+      border-radius:
+        9px;
+
+      background:
+        var(--login-dark-green);
+
+      box-shadow:
+        0 5px 14px
+        rgba(53,71,59,.18);
+
+      transition:
+        transform .35s
+        cubic-bezier(.2,.8,.2,1);
+
+    }
+
+
+    /* =====================================================
+       FORM
+    ====================================================== */
+
+    .login-field {
+
+      position: relative;
+
+      margin-bottom:
+        19px;
+
+    }
+
+
+    .login-field label {
+
+      display: block;
+
+      margin-bottom:
+        8px;
+
+      color:
+        #313832;
+
+      font-size:
+        .74rem;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .input-wrap {
+
+      position: relative;
+
+    }
+
+
+    .login-field input {
+
+      width: 100%;
+
+      height:
+        54px;
+
+      padding:
+        0 16px;
+
+      border:
+        1px solid
+        #dfe3dd;
+
+      border-radius:
+        12px;
+
+      outline:
+        none;
+
+      background:
+        #fafbf9;
+
+      color:
+        var(--login-black);
+
+      font-family:
+        inherit;
+
+      font-size:
+        .86rem;
+
+      transition:
+        .25s ease;
+
+    }
+
+
+    .login-field input:focus {
+
+      border-color:
+        #71836e;
+
+      background:
+        white;
+
+      box-shadow:
+        0 0 0 4px
+        rgba(113,131,110,.09);
+
+    }
+
+
+    .login-field input::placeholder {
+
+      color:
+        #a5aaa5;
+
+    }
+
+
+    .password-toggle {
+
+      position: absolute;
+
+      top: 50%;
+
+      right: 13px;
+
+      transform:
+        translateY(-50%);
+
+      border: 0;
+
+      background:
+        transparent;
+
+      color:
+        var(--login-green);
+
+      font-size:
+        .67rem;
+
+      font-weight:
+        800;
+
+      cursor:
+        pointer;
+
+    }
+
+
+    .f-err {
+
+      display: none;
+
+      margin:
+        7px 0 0;
+
+      color:
+        #a52b45;
+
+      font-size:
+        .7rem;
+
+      font-weight:
+        600;
+
+    }
+
+
+    .field.invalid .f-err {
+
+      display: block;
+
+    }
+
+
+    .field.invalid input {
+
+      border-color:
+        #c66b7e;
+
+      box-shadow:
+        0 0 0 4px
+        rgba(166,43,69,.06);
+
+    }
+
+
+    /* =====================================================
+       LOGIN OPTIONS
+    ====================================================== */
+
+    .login-options {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin:
+        4px 0 23px;
+
+    }
+
+
+    .remember {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      color:
+        #727971;
+
+      font-size:
+        .76rem;
+
+      cursor:
+        pointer;
+
+    }
+
+
+    .remember input {
+
+      width:
+        15px;
+
+      height:
+        15px;
+
+      accent-color:
+        var(--login-dark-green);
+
+    }
+
+
+    .forgot-link {
+
+      color:
+        var(--login-burgundy);
+
+      font-size:
+        .74rem;
+
+      font-weight:
+        800;
+
+      text-decoration:
+        none;
+
+    }
+
+
+    .forgot-link:hover {
+
+      text-decoration:
+        underline;
+
+    }
+
+
+    /* =====================================================
+       LOGIN BUTTON
+    ====================================================== */
+
+    .login-button {
+
+      width: 100%;
+
+      height:
+        55px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      border: 0;
+
+      border-radius:
+        12px;
+
+      background:
+        var(--login-dark-green);
+
+      color:
+        white;
+
+      font-family:
+        inherit;
+
+      font-size:
+        .78rem;
+
+      font-weight:
+        800;
+
+      letter-spacing:
+        .04em;
+
+      cursor:
+        pointer;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+    }
+
+
+    .login-button:hover {
+
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 12px 28px
+        rgba(57,72,61,.2);
+
+    }
+
+
+    .login-button svg {
+
+      transition:
+        transform .25s ease;
+
+    }
+
+
+    .login-button:hover svg {
+
+      transform:
+        translate(
+          3px,
+          -3px
+        );
+
+    }
+
+
+    /* =====================================================
+       SOCIAL LOGIN
+    ====================================================== */
+
+    .divider {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+      margin:
+        28px 0 19px;
+
+      color:
+        #a0a69f;
+
+      font-size:
+        .68rem;
+
+      font-weight:
+        700;
+
+      white-space:
+        nowrap;
+
+    }
+
+
+    .divider::before,
+    .divider::after {
+
+      content: "";
+
+      height:
+        1px;
+
+      flex: 1;
+
+      background:
+        #e7e9e5;
+
+    }
+
+
+    .social-auth {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap:
+        9px;
+
+    }
+
+
+    .social-auth button {
+
+      height:
+        44px;
+
+      border:
+        1px solid
+        #e1e4df;
+
+      border-radius:
+        10px;
+
+      background:
+        white;
+
+      color:
+        #434a44;
+
+      font-family:
+        inherit;
+
+      font-size:
+        .7rem;
+
+      font-weight:
+        800;
+
+      cursor:
+        pointer;
+
+      transition:
+        .2s ease;
+
+    }
+
+
+    .social-auth button:hover {
+
+      border-color:
+        #aeb8ad;
+
+      background:
+        #f8faf7;
+
+      transform:
+        translateY(-1px);
+
+    }
+
+
+    /* =====================================================
+       CARD BOTTOM
+    ====================================================== */
+
+    .login-bottom {
+
+      margin-top:
+        26px;
+
+      padding-top:
+        24px;
+
+      border-top:
+        1px solid
+        #eceeea;
+
+      text-align:
+        center;
+
+    }
+
+
+    .auth-alt {
+
+      margin: 0;
+
+      color:
+        #777e77;
+
+      font-size:
+        .76rem;
+
+    }
+
+
+    .auth-alt a {
+
+      color:
+        var(--login-burgundy);
+
+      font-weight:
+        800;
+
+      text-decoration:
+        none;
+
+    }
+
+
+    .security-note {
+
+      margin-top:
+        12px;
+
+      color:
+        #9ba19b;
+
+      font-size:
+        .64rem;
+
+      line-height:
+        1.5;
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ====================================================== */
+
+    .login-footer {
+
+      width: 100%;
+
+      padding:
+        20px 5vw;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      border-top:
+        1px solid
+        rgba(20,30,24,.07);
+
+      color:
+        #909690;
+
+      font-size:
+        .67rem;
+
+    }
+
+
+    .login-footer nav {
+
+      display: flex;
+
+      gap:
+        19px;
+
+    }
+
+
+    .login-footer a {
+
+      color:
+        inherit;
+
+      text-decoration:
+        none;
+
+    }
+
+
+    .login-footer a:hover {
+
+      color:
+        var(--login-black);
+
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ====================================================== */
+
+    @media (max-width: 1050px) {
+
+      .login-main {
+
+        grid-template-columns:
+          1fr;
+
+        max-width:
+          720px;
+
+      }
+
+
+      .login-visual {
+
+        min-height:
+          440px;
+
+      }
+
+
+      .login-panel {
+
+        min-height:
+          auto;
+
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .login-header {
+
+        min-height:
+          70px;
+
+        padding:
+          0 20px;
+
+      }
+
+
+      .login-logo img {
+
+        width:
+          112px;
+
+      }
+
+
+      .header-status {
+
+        font-size:
+          .58rem;
+
+      }
+
+
+      .login-main {
+
+        padding:
+          18px 15px 35px;
+
+        gap:
+          18px;
+
+      }
+
+
+      .login-visual {
+
+        min-height:
+          370px;
+
+        border-radius:
+          22px;
+
+      }
+
+
+      .visual-top {
+
+        top:
+          20px;
+
+        left:
+          20px;
+
+        right:
+          20px;
+
+      }
+
+
+      .visual-content {
+
+        left:
+          24px;
+
+        right:
+          24px;
+
+        bottom:
+          27px;
+
+      }
+
+
+      .visual-content h1 {
+
+        font-size:
+          2.45rem;
+
+      }
+
+
+      .visual-content p {
+
+        margin-top:
+          15px;
+
+        font-size:
+          .78rem;
+
+        line-height:
+          1.6;
+
+      }
+
+
+      .visual-stats {
+
+        display:
+          none;
+
+      }
+
+
+      .login-card {
+
+        padding:
+          28px 20px;
+
+        border-radius:
+          22px;
+
+      }
+
+
+      .login-card h2 {
+
+        font-size:
+          2rem;
+
+      }
+
+
+      .login-footer {
+
+        padding:
+          18px 20px;
+
+        flex-direction:
+          column;
+
+        gap:
+          12px;
+
+        text-align:
+          center;
+
+      }
+
+
+      .login-footer nav {
+
+        flex-wrap:
+          wrap;
+
+        justify-content:
+          center;
+
+      }
+
+    }
+
+
+    @media (max-width: 420px) {
+
+      .header-status {
+
+        display:
+          none;
+
+      }
+
+
+      .login-visual {
+
+        min-height:
+          330px;
+
+      }
+
+
+      .visual-content h1 {
+
+        font-size:
+          2.15rem;
+
+      }
+
+
+      .social-auth {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-page">
+
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
+  <header class="login-header">
+
+    <a
+      class="login-logo"
+      href="index.html"
+      aria-label="Stackly"
+    >
+
+      <img
+        src="assets/img/logo-stackly.webp"
+        alt="Stackly"
+      >
+
+    </a>
+
+
+    <div class="header-status">
+
+      <span class="status-dot"></span>
+
+      AI infrastructure operational
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
+
+  <main class="login-main">
+
+
+    <!-- ===================================================
+         LEFT VISUAL
+    ==================================================== -->
+
+    <section
+      class="login-visual"
+      data-aos="fade-right"
+    >
+
+      <img
+        src="assets/img/login-ai.webp"
+        alt="Stackly AI intelligence"
+        fetchpriority="high"
+      >
+
+
+      <div class="visual-overlay"></div>
+
+      <div class="visual-grid"></div>
+
+
+      <div class="visual-top">
+
+        <span>
+          STACKLY / 01
+        </span>
+
+
+        <span class="visual-label">
+          Intelligent workspace
+        </span>
+
+      </div>
+
+
+      <div class="visual-content">
+
+        <div class="visual-eyebrow">
+
+          Intelligence, engineered
+
+        </div>
+
+
+        <h1>
+
+          Build with
+          <span>intelligence.</span>
+
+        </h1>
+
+
+        <p>
+
+          Your AI workspace for turning
+          complex operations, data and
+          workflows into intelligent systems
+          that move your business forward.
+
+        </p>
+
+
+        <div class="visual-stats">
+
+
+          <div class="visual-stat">
+
+            <strong>
+              10K+
+            </strong>
+
+            <span>
+              Businesses
+            </span>
+
+          </div>
+
+
+          <div class="visual-stat">
+
+            <strong>
+              99.99%
+            </strong>
+
+            <span>
+              Uptime
+            </span>
+
+          </div>
+
+
+          <div class="visual-stat">
+
+            <strong>
+              24/7
+            </strong>
+
+            <span>
+              Intelligence
+            </span>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         LOGIN PANEL
+    ==================================================== -->
+
+    <section
+      class="login-panel"
+      data-aos="fade-left"
+    >
+
+
+      <div class="login-card">
+
+
+        <!-- CARD HEADER -->
+
+        <div class="card-kicker">
+
+          Secure workspace access
+
+        </div>
+
+
+        <h2>
+          Welcome back.
+        </h2>
+
+
+        <p class="card-description">
+
+          Log in to continue to your
+          Stackly AI workspace.
+
+        </p>
+
+
+
+        <!-- =================================================
+             USER / ADMIN
+        ================================================== -->
+
+        <div
+          class="role-switch"
+          role="tablist"
+          aria-label="Login role"
+        >
+
+          <span class="rs-pill"></span>
+
+
+          <button
+            class="role-option on"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            data-role="user"
+          >
+            USER
+          </button>
+
+
+          <button
+            class="role-option"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-role="admin"
+          >
+            ADMIN
+          </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LOGIN FORM
+        ================================================== -->
+
+        <form
+          id="loginForm"
+          novalidate
+        >
+
+
+          <!-- EMAIL -->
+
+          <div class="field login-field">
+
+            <label for="lf-email">
+              Email address
+            </label>
+
+
+            <div class="input-wrap">
+
+              <input
+                id="lf-email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@company.com"
+              >
+
+            </div>
+
+
+            <p class="f-err">
+
+              Enter a valid email address.
+
+            </p>
+
+          </div>
+
+
+
+          <!-- PASSWORD -->
+
+          <div class="field login-field">
+
+            <label for="lf-pass">
+              Password
+            </label>
+
+
+            <div class="input-wrap">
+
+              <input
+                id="lf-pass"
+                type="password"
+                autocomplete="current-password"
+                placeholder="Enter your password"
+              >
+
+
+              <button
+                type="button"
+                class="password-toggle pw-toggle"
+                aria-label="Show password"
+              >
+
+                Show
+
+              </button>
+
+            </div>
+
+
+            <p class="f-err">
+
+              Password must be at least
+              8 characters.
+
+            </p>
+
+          </div>
+
+
+
+          <!-- OPTIONS -->
+
+          <div class="login-options">
+
+
+            <label class="remember">
+
+              <input
+                type="checkbox"
+              >
+
+              Remember me
+
+            </label>
+
+
+            <a
+              href="404.html"
+              class="forgot-link"
+            >
+
+              Forgot password?
+
+            </a>
+
+
+          </div>
+
+
+
+          <!-- LOGIN BUTTON -->
+
+          <button
+            class="login-button"
+            type="submit"
+          >
+
+            Log in
+
+
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+
+              <path
+                d="M7 17 17 7M8 7h9v9"
+              />
+
+            </svg>
+
+          </button>
+
+
+        </form>
+
+
+
+        <!-- =================================================
+             SOCIAL LOGIN
+        ================================================== -->
+
+        <div class="divider">
+
+          or continue with
+
+        </div>
+
+
+        <div class="social-auth">
+
+
+          <button
+            type="button"
+            onclick="window.location.href='404.html'"
+          >
+
+            Google
+
+          </button>
+
+
+          <button
+            type="button"
+            onclick="window.location.href='404.html'"
+          >
+
+            GitHub
+
+          </button>
+
+
+          <button
+            type="button"
+            onclick="window.location.href='404.html'"
+          >
+
+            SSO
+
+          </button>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             BOTTOM
+        ================================================== -->
+
+        <div class="login-bottom">
+
+
+          <p class="auth-alt">
+
+            New to Stackly?
+
+            <a href="register.html">
+
+              Create an account
+
+            </a>
+
+          </p>
+
+
+          <p class="security-note">
+
+            Protected by 256-bit encryption ·
+            SOC 2 aligned infrastructure
+
+          </p>
+
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="login-footer">
+
+
+    <span>
+
+      © 2026 Stackly AI Solutions
+
+    </span>
+
+
+    <nav>
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="blog.html">
+        Blog
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+      <a href="login.html">
+        Log in
+      </a>
+
+    </nav>
+
+
+  </footer>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     GSAP
+====================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+
+<!-- =====================================================
+     AOS
+====================================================== -->
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+<!-- =====================================================
+     EXISTING PROJECT JS
+====================================================== -->
+
+<script src="assets/js/main.js"></script>
+
+<script src="assets/js/navigation.js"></script>
+
+<script src="assets/js/animations.js"></script>
+
+<script src="assets/js/form-validation.js"></script>
+
+
+
+<!-- =====================================================
+     LOGIN PAGE JS
+====================================================== -->
+
+<script>
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+
+
+    /* ===================================================
+       AOS
+    ==================================================== */
+
+    if (typeof AOS !== "undefined") {
+
+      AOS.init({
+
+        duration: 900,
+
+        easing: "ease-out-cubic",
+
+        once: true,
+
+        offset: 50
+
+      });
+
+    }
+
+
+
+    /* ===================================================
+       ROLE SELECTOR
+    ==================================================== */
+
+    const roleOptions =
+      document.querySelectorAll(
+        ".role-option"
+      );
+
+
+    const rolePill =
+      document.querySelector(
+        ".rs-pill"
+      );
+
+
+    let selectedRole = "user";
+
+
+    roleOptions.forEach(
+      function (button, index) {
+
+
+        button.addEventListener(
+          "click",
+          function () {
+
+
+            roleOptions.forEach(
+              function (item) {
+
+                item.classList.remove(
+                  "on"
+                );
+
+                item.setAttribute(
+                  "aria-selected",
+                  "false"
+                );
+
+              }
+            );
+
+
+            button.classList.add(
+              "on"
+            );
+
+
+            button.setAttribute(
+              "aria-selected",
+              "true"
+            );
+
+
+            selectedRole =
+              button.dataset.role;
+
+
+            if (rolePill) {
+
+              rolePill.style.transform =
+                index === 0
+                  ? "translateX(0)"
+                  : "translateX(100%)";
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+
+    /* ===================================================
+       PASSWORD SHOW / HIDE
+    ==================================================== */
+
+    const passwordInput =
+      document.getElementById(
+        "lf-pass"
+      );
+
+
+    const passwordToggle =
+      document.querySelector(
+        ".pw-toggle"
+      );
+
+
+    if (
+      passwordInput &&
+      passwordToggle
+    ) {
+
+
+      passwordToggle.addEventListener(
+        "click",
+        function () {
+
+
+          const isPassword =
+            passwordInput.type ===
+            "password";
+
+
+          passwordInput.type =
+            isPassword
+              ? "text"
+              : "password";
+
+
+          passwordToggle.textContent =
+            isPassword
+              ? "Hide"
+              : "Show";
+
+
+          passwordToggle.setAttribute(
+            "aria-label",
+            isPassword
+              ? "Hide password"
+              : "Show password"
+          );
+
+
+        }
+      );
+
+    }
+
+
+
+    /* ===================================================
+       REMOVE VALIDATION ERROR WHILE TYPING
+    ==================================================== */
+
+    const inputs =
+      document.querySelectorAll(
+        ".login-field input"
+      );
+
+
+    inputs.forEach(
+      function (input) {
+
+
+        input.addEventListener(
+          "input",
+          function () {
+
+
+            const field =
+              input.closest(
+                ".login-field"
+              );
+
+
+            if (field) {
+
+              field.classList.remove(
+                "invalid"
+              );
+
+            }
+
+
+          }
+        );
+
+
+      }
+    );
+
+
+
+    /* ===================================================
+       LOGIN FORM
+    ==================================================== */
+
+    const loginForm =
+      document.getElementById(
+        "loginForm"
+      );
+
+
+    if (loginForm) {
+
+
+      loginForm.addEventListener(
+        "submit",
+        function (event) {
+
+
+          event.preventDefault();
+
+
+          const email =
+            document.getElementById(
+              "lf-email"
+            );
+
+
+          const password =
+            document.getElementById(
+              "lf-pass"
+            );
+
+
+          const emailField =
+            email.closest(
+              ".field"
+            );
+
+
+          const passwordField =
+            password.closest(
+              ".field"
+            );
+
+
+          let valid = true;
+
+
+
+          /* EMAIL VALIDATION */
+
+          if (
+            !email.value.trim() ||
+            !email.checkValidity()
+          ) {
+
+
+            emailField.classList.add(
+              "invalid"
+            );
+
+
+            valid = false;
+
+
+          } else {
+
+
+            emailField.classList.remove(
+              "invalid"
+            );
+
+
+          }
+
+
+
+          /* PASSWORD VALIDATION */
+
+          if (
+            password.value.length < 8
+          ) {
+
+
+            passwordField.classList.add(
+              "invalid"
+            );
+
+
+            valid = false;
+
+
+          } else {
+
+
+            passwordField.classList.remove(
+              "invalid"
+            );
+
+
+          }
+
+
+
+          /* =================================================
+             REDIRECT BASED ON SELECTED ROLE
+          ================================================== */
+
+          if (valid) {
+
+            /* =================================================
+               SAVE LOGIN SESSION FOR THE DASHBOARD
+               The exact email entered here is reused by both
+               the User Dashboard and Admin Dashboard.
+            ================================================== */
+            const loginEmail = email.value.trim();
+
+            const loginUser = {
+              email: loginEmail,
+              role: selectedRole,
+              loggedInAt: new Date().toISOString()
+            };
+
+            try {
+              localStorage.setItem(
+                "stacklyUser",
+                JSON.stringify(loginUser)
+              );
+              sessionStorage.setItem(
+                "stacklyUser",
+                JSON.stringify(loginUser)
+              );
+              localStorage.setItem(
+                "stacklyEmail",
+                loginEmail
+              );
+              sessionStorage.setItem(
+                "stacklyEmail",
+                loginEmail
+              );
+            } catch (storageError) {
+              console.warn(
+                "Stackly login session could not be saved:",
+                storageError
+              );
+            }
+
+
+            const button =
+              loginForm.querySelector(
+                ".login-button"
+              );
+
+
+            button.disabled = true;
+
+
+            button.innerHTML =
+              "Logging in...";
+
+
+            setTimeout(
+              function () {
+
+
+                if (
+                  selectedRole ===
+                  "admin"
+                ) {
+
+
+                  window.location.href =
+                    "admin-dashboard.html";
+
+
+                } else {
+
+
+                  window.location.href =
+                    "dashboard.html";
+
+
+                }
+
+
+              },
+              700
+            );
+
+
+          }
+
+
+        }
+      );
+
+
+    }
+
+
+
+    /* ===================================================
+       GSAP ANIMATIONS
+    ==================================================== */
+
+    if (
+      typeof gsap !==
+      "undefined"
+    ) {
+
+
+      gsap.from(
+        ".login-card",
+        {
+
+          y: 35,
+
+          opacity: 0,
+
+          duration: 1,
+
+          ease:
+            "power3.out",
+
+          delay: .15
+
+        }
+      );
+
+
+      gsap.from(
+        ".visual-content",
+        {
+
+          y: 35,
+
+          opacity: 0,
+
+          duration: 1.1,
+
+          ease:
+            "power3.out",
+
+          delay: .3
+
+        }
+      );
+
+
+      gsap.from(
+        ".visual-stat",
+        {
+
+          y: 15,
+
+          opacity: 0,
+
+          duration: .7,
+
+          stagger: .12,
+
+          ease:
+            "power2.out",
+
+          delay: .8
+
+        }
+      );
+
+
+    }
+
+
+  }
+);
+
+</script>
+
+<script id="stackly-login-session-helper">
+(function () {
+  try {
+    const raw =
+      localStorage.getItem("stacklyUser") ||
+      sessionStorage.getItem("stacklyUser");
+
+    if (raw) {
+      const user = JSON.parse(raw);
+      if (user && user.email) {
+        localStorage.setItem("stacklyEmail", user.email);
+        sessionStorage.setItem("stacklyEmail", user.email);
+      }
+    }
+  } catch (e) {}
+})();
+</script>
+
+</body>
+
+</html>

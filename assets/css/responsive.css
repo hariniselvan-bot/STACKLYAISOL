@@ -1,0 +1,143 @@
+/* ============ RESPONSIVE ============ */
+@media (min-width:1600px){.container{width:1400px}.hero-title{font-size:14rem}}
+@media (max-width:1200px){
+  .nav-search{display:none}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .b-2x2{min-height:440px}
+  .stats-grid,.flow-steps{grid-template-columns:repeat(2,1fr)}
+  .blog-grid{grid-template-columns:repeat(2,1fr)}
+  .post.feature{grid-column:span 2}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .f-grid{grid-template-columns:1fr 1fr 1fr}
+}
+@media (max-width:992px){
+  .nav-links,.nav .lang-btn{display:none}
+  .burger{display:block}
+  .split,.split.rev{grid-template-columns:1fr}
+  .split.rev>.split-media{order:0}
+  .contact-grid,.auth{grid-template-columns:1fr}
+  .auth-visual{min-height:320px}
+  .auth{grid-template-rows:auto 1fr}
+  .c-info-card{position:static}
+  .cases{grid-template-columns:1fr 1fr}
+  .plans{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}
+  .p-row{grid-template-columns:70px 1fr;gap:.8rem}
+  .p-row p{grid-column:2}
+  .p-row .p-arr{display:none}
+  .hs-panel{width:84vw;height:56vh}
+  .hs-track{height:auto;padding:3rem 6vw;display:flex;overflow-x:auto;width:auto;scroll-snap-type:x mandatory}
+  .hs-panel{scroll-snap-align:center}
+}
+@media (max-width:768px){
+  .hero{padding-top:7.5rem}
+  .hero-badge{padding:.6rem .9rem;font-size:.74rem;border-radius:14px}
+  .hb-1{left:2%;top:8%}.hb-2{right:2%;top:14%}
+  .hero-under{flex-direction:column;align-items:flex-start}
+  .hero-ctas{justify-content:flex-start}
+  .bento{grid-template-columns:1fr}
+  .b-2x2,.b-2x1,.b-1x2{grid-column:auto;grid-row:auto;min-height:300px}
+  .stats-grid,.flow-steps,.cases,.blog-grid,.team-grid{grid-template-columns:1fr}
+  .post.feature{grid-column:span 1;flex-direction:column}
+  .post.feature .p-img{min-height:220px}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .f-brand{grid-column:span 2}
+  .cta .cta-inner{background:linear-gradient(rgba(23,37,29,.82),rgba(23,37,29,.55))}
+  .hero-visual{width:clamp(210px,52vw,320px)}
+  .flow-sec,.cta{margin:0 .6rem;border-radius:30px}
+}
+@media (max-width:576px){
+  .hero{min-height:auto;padding-bottom:5.5rem}
+  .hero-visual{position:relative;left:auto;top:auto;transform:none;margin:1.6rem auto 0;width:min(78vw,320px)}
+  .hc-1{transform:rotate(-8deg) translate(-12%,3%) scale(.9)}
+  .hc-2{transform:rotate(6deg) translate(12%,-2%) scale(.93)}
+  .hero-badge{display:none}
+  .hero-under{margin-top:2rem}
+
+  .nav{top:10px;width:94%;padding-left:1rem}
+  .btn-sm{padding:.5rem 1rem}
+  .hero-title{font-size:clamp(2.9rem,15vw,4.4rem)}
+  .hero-arrow{width:48px;height:48px;top:-18px;right:-14px}
+  .f-row{flex-direction:column;gap:0}
+  .f-grid{grid-template-columns:1fr}
+  .f-brand{grid-column:span 1}
+  .e404 .big-404{position:static;transform:none;font-size:6.5rem;opacity:.9;-webkit-text-stroke:0;color:rgba(246,233,216,.14)}
+  .search-box{flex-direction:column}
+}
+
+/* REDESIGN v2 mobile overrides (win over earlier 576px block) */
+@media (max-width:576px){
+  .hero{padding-top:6.2rem}
+  .hero-visual{position:relative;left:auto;top:auto;transform:none;margin:1.4rem auto 0;width:min(72vw,280px)}
+  .hc-1{transform:rotate(-10deg) translate(-14%,4%) scale(.9)}
+  .hc-2{transform:rotate(8deg) translate(13%,-2%) scale(.92)}
+  .hero-badge{display:inline-flex}
+  .hero-title{font-size:clamp(2.6rem,13vw,3.6rem);white-space:normal}
+}
+
+/* ================= RESPONSIVE v3 — mobile hero + header ================= */
+@media (max-width:992px){
+  .nav .nav-right .btn{display:none}
+  .hero{min-height:auto;padding:6.4rem 0 3rem}
+  .hero-stage{min-height:0;width:94%}
+  .hero-title{font-size:clamp(54px,17.5vw,100px);line-height:.82;letter-spacing:-.05em;white-space:normal;margin-top:.8rem}
+  .hero-visual{position:relative;left:auto;top:auto;transform:none;margin:1.5rem auto 0;width:62vw;max-width:280px}
+  .hc-1{transform:rotate(-10deg) translate(-14%,4%) scale(.9)}
+  .hc-2{transform:rotate(8deg) translate(13%,-2%) scale(.92)}
+  .hero-badge{position:static;display:inline-flex;margin:1.1rem .3rem 0;padding:.6rem .95rem;font-size:.76rem}
+  .hero-under{flex-direction:column;align-items:flex-start;margin-top:2rem;gap:1.6rem;padding-bottom:.4rem}
+  .trust{align-items:flex-start;text-align:left}
+  .ib-center{min-height:0}
+  .ib-block{grid-template-columns:76px 1fr}
+  .ib-block img{width:76px;height:76px}
+  .ib-quote{font-size:clamp(1.5rem,6.5vw,2rem)}
+}
+@media (max-width:576px){
+  .hero-title{font-size:clamp(50px,16.5vw,84px)}
+  .hero-visual{width:64vw}
+}
+
+/* ================= FINAL v4 — mobile compact composition ================= */
+@media (max-width:992px){
+  .nav{width:calc(100% - 28px);top:12px;padding:.45rem .6rem .45rem 1rem}
+  .logo img{width:105px}
+}
+@media (max-width:768px){
+  .section{padding:3rem 0}
+  .hero{padding:5.6rem 0 2rem}
+  .hero-stage{width:92%}
+  .hero-badge{margin:.9rem .25rem 0;padding:.55rem .95rem;font-size:.74rem}
+  .hero-title{margin-top:.4rem}
+  .hero-visual{margin:1rem auto 0;width:60vw;max-width:260px}
+  .hero-under{margin-top:1.2rem;gap:1rem;padding-bottom:0}
+  .trust{gap:.55rem}
+  .hero-copy p{font-size:.9rem}
+  .intro-bento{margin-top:1.1rem;gap:.9rem}
+  .ib-card{padding:1.05rem;border-radius:20px}
+  .ib-left img{margin-bottom:.8rem}
+  .ib-list li{padding:.75rem .2rem}
+  .ib-list .t{font-size:1.02rem}
+  .ib-qmark{font-size:3.6rem;margin:.4rem 0 1.2rem}
+  .ib-block{grid-template-columns:62px 1fr;gap:.85rem}
+  .ib-block img{width:62px;height:62px;border-radius:12px}
+  .ib-block+.ib-block{padding-top:.95rem}
+  .ib-block h3{font-size:1.15rem}
+  .stat{padding:1.3rem 1.15rem}
+  .sol-card{aspect-ratio:3/3.3}
+  .bento-card{min-height:230px}
+  .plans{gap:.9rem}
+  .faq-q{padding:1.15rem .2rem}
+  .cta .cta-inner{min-height:0;padding:3rem 1.5rem}
+  .p-row{padding:1.5rem 0}
+  .mm-top{padding:.4rem 0 1rem;margin-bottom:.7rem}
+  .mm-bottom{padding-top:1.1rem}
+  .flow-steps{gap:.8rem}
+  .process-list{margin-top:2rem}
+  .split-body h2{margin:.8rem 0 1rem}
+  .page-hero{padding:8.5rem 0 3rem}
+}
+@media (max-width:576px){
+  .hero-title{font-size:clamp(50px,16.8vw,84px)}
+  .hero-visual{width:62vw}
+  .svg-deco{width:70vw}
+  .hero .svg-deco{left:-50px;width:80vw}
+}
