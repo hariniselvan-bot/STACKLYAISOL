@@ -167,7 +167,24 @@ if($('.spotlight')&&matchMedia('(hover:hover)').matches){document.body.insertAdj
 
 /* ---------- 404 ---------- */
 const back404=$('[data-back]');
-if(back404)back404.addEventListener('click',()=>{if(history.length>1)history.back();else location.href='index.html';});
+if(back404 && back404.dataset.stacklyBackBound !== 'true'){
+  back404.dataset.stacklyBackBound='true';
+  back404.addEventListener('click',e=>{
+    e.preventDefault();
+    if(back404.dataset.processing === 'true') return;
+    back404.dataset.processing='true';
+    if(history.length > 1){ history.back(); return; }
+    const previousPage = sessionStorage.getItem('404PreviousPage');
+    if(previousPage){
+      sessionStorage.removeItem('404PreviousPage');
+      location.href = previousPage;
+      return;
+    }
+    const referrer = document.referrer || '';
+    if(referrer && !referrer.includes('/404.html')){ location.href = referrer; return; }
+    location.href='index.html';
+  });
+}
 const search404=$('.search-box');
 if(search404)search404.addEventListener('submit',e=>{e.preventDefault();const v=$('input',search404).value.trim();
   if(v)location.href='blog.html?q='+encodeURIComponent(v);});

@@ -2427,7 +2427,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const overlay = document.getElementById("dashboardOverlay");
   const signOutButton = document.getElementById("signOutButton");
 
-  function setSupport CopilotMenu(open){
+  function setSupportMenu(open){
     sidebar.classList.toggle("open", open);
     mobileMenu.classList.toggle("is-open", open);
     mobileMenu.textContent = open ? "×" : "☰";
@@ -2435,16 +2435,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if(!open) overlay.style.display = "";
   }
 
-  mobileMenu.addEventListener("click", function(){
-    setSupport CopilotMenu(!sidebar.classList.contains("open"));
+  mobileMenu.addEventListener("click", function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    setSupportMenu(!sidebar.classList.contains("open"));
   });
 
   overlay.addEventListener("click", function(){
-    setSupport CopilotMenu(false);
+    setSupportMenu(false);
   });
 
   window.addEventListener("resize", function(){
-    if(window.innerWidth > 760) setSupport CopilotMenu(false);
+    if(window.innerWidth > 760) setSupportMenu(false);
   });
 
   signOutButton.addEventListener("click", function(){
