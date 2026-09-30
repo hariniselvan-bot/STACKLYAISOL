@@ -1,32 +1,52 @@
 /* =========================================================
    STACKLY — navigation.js
-   Fixed Header + Mobile Menu + 404 Back Navigation
+   Mobile menu accessibility
+   404 smart back navigation
+   Previous page + section restoration
+   Header state restoration after Back / Forward
    ========================================================= */
 
 (function () {
 
     "use strict";
 
-
-    /* =========================================================
-       HELPER
-       ========================================================= */
-
-    const $ = (selector, context = document) => {
-        return context.querySelector(selector);
-    };
+    const $ = (selector, context = document) =>
+        context.querySelector(selector);
 
 
     /* =========================================================
-       HEADER
+       RESTORE PAGE TRANSITION STATE
+       main.js temporarily transforms <body> during navigation.
+       A transformed ancestor can affect fixed-position children.
+       Always clear that state when a page is restored.
        ========================================================= */
 
-    function updateHeader() {
+    function restoreBodyState() {
 
-        const header = $("header");
+        if (!document.body) return;
+
+        document.body.style.opacity = "";
+        document.body.style.transform = "";
+        document.body.style.filter = "";
+        document.body.style.transition = "";
+        document.body.style.overflow = "";
+    }
+
+
+    /* =========================================================
+       HEADER STATE
+       IMPORTANT:
+       Do NOT change position/top/transform here.
+       The original CSS controls the fixed .nav.
+       ========================================================= */
+
+    function refreshHeaderState() {
+
         const nav = $(".nav");
 
-        if (!header) return;
+        if (!nav) {
+            return;
+        }
 
         const scrollY =
             window.scrollY ||
@@ -34,31 +54,7 @@
             document.documentElement.scrollTop ||
             0;
 
-
-        /*
-         * DO NOT change position here.
-         * Your CSS controls fixed positioning.
-         */
-
-
-        if (scrollY > 20) {
-
-            header.classList.add("scrolled");
-
-            if (nav) {
-                nav.classList.add("scrolled");
-            }
-
-        } else {
-
-            header.classList.remove("scrolled");
-
-            if (nav) {
-                nav.classList.remove("scrolled");
-            }
-
-        }
-
+        nav.classList.toggle("scrolled", scrollY > 40);
     }
 
 
@@ -66,199 +62,90 @@
        SCROLL
        ========================================================= */
 
-    let ticking = false;
+    let scrollTicking = false;
 
     window.addEventListener(
         "scroll",
         function () {
 
-            if (!ticking) {
-
-                window.requestAnimationFrame(function () {
-
-                    updateHeader();
-
-                    ticking = false;
-
-                });
-
-                ticking = true;
+            if (scrollTicking) {
+                return;
             }
 
+            scrollTicking = true;
+
+            requestAnimationFrame(function () {
+
+                refreshHeaderState();
+
+                scrollTicking = false;
+
+            });
+
         },
-        {
-            passive: true
-        }
+        { passive: true }
     );
 
 
     /* =========================================================
-       MOBILE MENU
+       MOBILE MENU — ESC TO CLOSE
+       ========================================================= */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key !== "Escape") {
+            return;
+        }
+
+        const mobileMenu = $(".mobile-menu");
+        const burger = $(".burger");
+
+        if (
+            mobileMenu &&
+            mobileMenu.classList.contains("open") &&
+            burger
+        ) {
+            burger.click();
+        }
+
+    });
+
+
+    /* =========================================================
+       MOBILE MENU ACCESSIBILITY
        ========================================================= */
 
     const burger = $(".burger");
     const mobileMenu = $(".mobile-menu");
-    const closeButton = $(".mm-close");
 
+    if (burger && mobileMenu) {
 
-    function openMobileMenu() {
+        const menuObserver =
+            new MutationObserver(function () {
 
-        if (!mobileMenu) return;
-
-        mobileMenu.classList.add("open");
-
-        document.body.classList.add("menu-open");
-
-
-        if (burger) {
-
-            burger.classList.add("active");
-
-            burger.setAttribute(
-                "aria-expanded",
-                "true"
-            );
-
-        }
-
-
-        mobileMenu.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-    }
-
-
-    function closeMobileMenu() {
-
-        if (!mobileMenu) return;
-
-        mobileMenu.classList.remove("open");
-
-        document.body.classList.remove("menu-open");
-
-
-        if (burger) {
-
-            burger.classList.remove("active");
-
-            burger.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        }
-
-
-        mobileMenu.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-    }
-
-
-    if (burger) {
-
-        burger.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
-
-                if (
-                    mobileMenu &&
-                    mobileMenu.classList.contains("open")
-                ) {
-
-                    closeMobileMenu();
-
-                } else {
-
-                    openMobileMenu();
-
+                if (mobileMenu.classList.contains("open")) {
+                    burger.focus();
                 }
-
-            }
-        );
-
-    }
-
-
-    if (closeButton) {
-
-        closeButton.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
-
-                closeMobileMenu();
-
-            }
-        );
-
-    }
-
-
-    /* =========================================================
-       ESC KEY
-       ========================================================= */
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Escape" &&
-                mobileMenu &&
-                mobileMenu.classList.contains("open")
-            ) {
-
-                closeMobileMenu();
-
-            }
-
-        }
-    );
-
-
-    /* =========================================================
-       MOBILE LINKS
-       ========================================================= */
-
-    if (mobileMenu) {
-
-        mobileMenu
-            .querySelectorAll("a")
-            .forEach(function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function () {
-
-                        closeMobileMenu();
-
-                    }
-                );
 
             });
 
+        menuObserver.observe(mobileMenu, {
+            attributes: true,
+            attributeFilter: ["class"]
+        });
+
     }
 
 
     /* =========================================================
-       404 — SAVE PREVIOUS PAGE
+       404 — SAVE CURRENT PAGE
        ========================================================= */
 
     window.save404PreviousPage = function () {
 
         try {
 
-            const currentURL =
-                window.location.href;
-
+            const currentURL = window.location.href;
 
             if (
                 currentURL &&
@@ -275,7 +162,7 @@
         } catch (error) {
 
             console.warn(
-                "Stackly: Could not save previous page.",
+                "Stackly: Unable to save 404 previous page.",
                 error
             );
 
@@ -285,11 +172,10 @@
 
 
     /* =========================================================
-       404 — SMART BACK
+       404 — SMART GO BACK
        ========================================================= */
 
     const back404 = $("[data-back]");
-
 
     if (
         back404 &&
@@ -298,26 +184,23 @@
 
         back404.dataset.stacklyBackBound = "true";
 
-
         back404.addEventListener(
             "click",
             function (event) {
 
                 event.preventDefault();
 
-
-                if (
-                    back404.dataset.processing === "true"
-                ) {
+                if (back404.dataset.processing === "true") {
                     return;
                 }
-
 
                 back404.dataset.processing = "true";
 
 
                 /*
-                 * First try browser history.
+                 * Prefer normal browser history.
+                 * This preserves the exact scroll position
+                 * when the browser restores the previous page.
                  */
                 if (window.history.length > 1) {
 
@@ -328,11 +211,7 @@
                 }
 
 
-                /*
-                 * Session storage fallback.
-                 */
                 let previousPage = null;
-
 
                 try {
 
@@ -344,7 +223,7 @@
                 } catch (error) {
 
                     console.warn(
-                        "Stackly: Could not read previous page.",
+                        "Stackly: Unable to read 404 previous page.",
                         error
                     );
 
@@ -369,12 +248,8 @@
                 }
 
 
-                /*
-                 * Referrer fallback.
-                 */
                 const referrer =
                     document.referrer || "";
-
 
                 if (
                     referrer &&
@@ -389,9 +264,6 @@
                 }
 
 
-                /*
-                 * Final fallback.
-                 */
                 window.location.href =
                     "index.html";
 
@@ -402,18 +274,12 @@
 
 
     /* =========================================================
-       PAGE RESTORATION
+       NAVIGATION RESTORATION
        ========================================================= */
 
-    function restoreNavigation() {
+    function refreshNavigationState() {
 
-        /*
-         * DO NOT modify position.
-         * Only restore the header state.
-         */
-
-        updateHeader();
-
+        refreshHeaderState();
 
         window.dispatchEvent(
             new CustomEvent(
@@ -425,70 +291,37 @@
 
 
     /* =========================================================
-       PAGE SHOW
+       BFCACHE / BACK / FORWARD
        ========================================================= */
 
     window.addEventListener(
         "pageshow",
         function () {
 
-            /*
-             * Immediately restore header.
-             */
-            restoreNavigation();
-
+            restoreBodyState();
+            refreshNavigationState();
 
             /*
-             * Browser may restore scroll position
-             * after pageshow.
+             * Browser may restore scroll position just after
+             * pageshow, so check again.
              */
-
             setTimeout(
-                restoreNavigation,
+                refreshNavigationState,
                 50
             );
 
-
             setTimeout(
-                restoreNavigation,
-                200
+                refreshNavigationState,
+                250
             );
 
-
             setTimeout(
-                restoreNavigation,
-                500
+                refreshNavigationState,
+                600
             );
 
         }
     );
-
-
-    /* =========================================================
-       DOM READY
-       ========================================================= */
-
-    if (
-        document.readyState === "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
-
-                restoreNavigation();
-
-            },
-            {
-                once: true
-            }
-        );
-
-    } else {
-
-        restoreNavigation();
-
-    }
 
 
     /* =========================================================
@@ -499,27 +332,32 @@
         "hashchange",
         function () {
 
-            restoreNavigation();
+            setTimeout(
+                refreshNavigationState,
+                50
+            );
 
         }
     );
 
 
     /* =========================================================
-       RESIZE
+       INITIAL LOAD
        ========================================================= */
 
-    window.addEventListener(
-        "resize",
-        function () {
+    if (document.readyState === "loading") {
 
-            updateHeader();
+        document.addEventListener(
+            "DOMContentLoaded",
+            refreshNavigationState,
+            { once: true }
+        );
 
-        },
-        {
-            passive: true
-        }
-    );
+    } else {
+
+        refreshNavigationState();
+
+    }
 
 
 })();
