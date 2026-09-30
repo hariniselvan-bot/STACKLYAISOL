@@ -552,6 +552,24 @@ table.compare{width:100%;border-collapse:collapse;font-size:.88rem;min-width:640
 .mobile-menu a.mm-link span{display:none}
 .mobile-menu a.mm-link.active{background:rgba(125,20,45,.08);color:#7d142d;font-weight:600}
 .mobile-menu a.mm-link.active::before{content:none}
+/* =========================================================
+   STACKLY — FIXED HEADER
+   ========================================================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+/* Keep navigation above content */
+header .nav {
+    position: relative;
+    z-index: 10000;
+}
 
 /* Mobile menu */
 .mobile-menu {
@@ -561,47 +579,4 @@ table.compare{width:100%;border-collapse:collapse;font-size:.88rem;min-width:640
 /* Prevent background scrolling when mobile menu opens */
 body.menu-open {
     overflow: hidden;
-}
-
-/* =========================================================
-   STACKLY — MOBILE MENU SAFETY
-   ========================================================= */
-
-.mobile-menu {
-    z-index: 10001;
-}
-
-body.menu-open {
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   STACKLY — FINAL HEADER FIX
-   Keep the existing floating header fixed.
-   This rule must be the final navigation rule.
-   ========================================================= */
-
-header {
-    position: relative;
-    z-index: 9998;
-}
-
-header > .nav {
-    position: fixed !important;
-    top: 20px;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    z-index: 10000 !important;
-    width: calc(100% - 48px);
-    max-width: 1800px;
-}
-
-/* Mobile/tablet sizing */
-@media (max-width: 992px) {
-    header > .nav {
-        top: 12px;
-        width: calc(100% - 28px);
-    }
 }

@@ -72,7 +72,7 @@ if(window.gsap&&!reduced){
       gsap.to('body',{opacity:0,y:-14,filter:'blur(6px)',duration:.4,ease:'power2.in',onComplete:()=>location.href=a.href});
     });
   });
-  addEventListener('pageshow',e=>{gsap.set('body',{opacity:1,y:0,filter:'none'});});
+  addEventListener('pageshow',e=>{if(e.persisted)gsap.set('body',{opacity:1,y:0,filter:'none'});});
 }
 
 /* ---------- Custom cursor ---------- */
